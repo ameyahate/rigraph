@@ -3746,6 +3746,40 @@ SEXP R_igraph_betweenness(SEXP graph, SEXP pvids, SEXP pdirected,
   return result;
 }
 
+// Adding interface for group_betweenness
+SEXP R_igraph_group_betweenness(SEXP graph, SEXP pvids, SEXP pdirected, 
+			  SEXP types, SEXP weights, SEXP pnobigint) {
+  
+  igraph_t g;
+  igraph_vs_t vs;
+  igraph_bool_t directed=LOGICAL(pdirected)[0];
+  igraph_bool_t nobigint=LOGICAL(pnobigint)[0];
+  igraph_vector_t res;
+  igraph_strvector_t v_types, *ptypes=0;
+  igraph_vector_t v_weights, *pweights=0;
+  SEXP result;
+  
+  R_SEXP_to_igraph(graph, &g);
+  R_SEXP_to_igraph_vs(pvids, &g, &vs);
+  igraph_vector_init(&res, 0);
+  if (!isNull(weights)) { 
+    pweights=&v_weights; R_SEXP_to_vector(weights, &v_weights);
+  }
+  if (!isNull(types)){
+    ptypes=&v_types; R_igraph_SEXP_to_strvector(types, &v_types)
+  }
+  igraph_betweenness(&g, &res, vs, directed, ptypes, pweights, nobigint);
+  
+  PROTECT(result=NEW_NUMERIC(igraph_vector_size(&res)));
+  igraph_vector_copy_to(&res, REAL(result));
+  igraph_vector_destroy(&res);
+  igraph_vs_destroy(&vs);
+
+  UNPROTECT(1);
+  return result;
+}
+// End of interface for group_betweenness
+
 SEXP R_igraph_running_mean(SEXP pdata, SEXP pbinwidth) {
   
   igraph_vector_t data;

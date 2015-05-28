@@ -839,6 +839,70 @@ betweenness <- function(graph, v=V(graph), directed=TRUE, weights=NULL,
   res
 }
 
+##########################################################################################
+# New measure: group_betweenness. Documentation is pending.
+# Maps to c function:
+# int igraph_group_betweenness(const igraph_t *graph, 
+#                              igraph_vector_t *res,
+#	   	                       const igraph_vs_t vids, 
+#	 	                       igraph_bool_t directed,
+#		                       const igraph_strvector_t *types,
+#		                       const igraph_vector_t* weights, 
+#		                       igraph_bool_t nobigint)
+
+
+
+group_betweenness <- function(graph, v=V(graph), directed=TRUE, types=NULL, weights=NULL,
+                        nobigint=TRUE, normalized=FALSE) {
+  
+  if (!is_igraph(graph)) {
+    stop("Not a graph object")
+  }
+  v <- as.igraph.vs(graph, v)
+  if (is.null(weights) && "weight" %in% edge_attr_names(graph)) {
+    weights <- E(graph)$weight
+  }
+  if (!is.null(weights) && any(!is.na(weights))) {
+    weights <- as.numeric(weights)
+  } else {
+    weights <- NULL
+  }
+# Check the types vector
+  if (is.null(types) && "type" %in% vertex_attr_names(graph)) { 
+  types <- V(graph)$type 
+  } 
+  if (!is.null(types)) {
+    if (!is.character(types)) {
+      warning("vertex types converted to character")
+    }
+    types <- as.character(types)
+    if (any(is.na(types))) {
+      stop("`NA' is not allowed in vertex types")
+    }
+  } else { 
+  stop("Vertices need to have 'types', supply `types' argument") 
+  }
+   
+  on.exit( .Call("R_igraph_finalizer", PACKAGE="igraph") )
+  res <- .Call("R_igraph_group_betweenness", graph, v-1,
+               as.logical(directed), types, weights, as.logical(nobigint),
+               PACKAGE="igraph")
+  if (normalized) {
+    vc <- vcount(graph)
+    if (is_directed(graph) && directed) {
+      res <- res / ( vc*vc-3*vc+2)
+    } else {
+      res <- 2*res / ( vc*vc-3*vc+2)
+    }
+  }
+  if (igraph_opt("add.vertex.names") && is_named(graph)) {
+    names(res) <- V(graph)$name[v]
+  }
+  res
+}
+##########################################################################################
+
+
 
 
 #' Transitivity of a graph
