@@ -3766,7 +3766,7 @@ SEXP R_igraph_group_betweenness(SEXP graph, SEXP pvids, SEXP pdirected,
     pweights=&v_weights; R_SEXP_to_vector(weights, &v_weights);
   }
   if (!isNull(types)){
-    ptypes=&v_types; R_igraph_SEXP_to_strvector(types, &v_types)
+    ptypes=&v_types; R_igraph_SEXP_to_strvector(types, &v_types);
   }
   igraph_betweenness(&g, &res, vs, directed, ptypes, pweights, nobigint);
   
