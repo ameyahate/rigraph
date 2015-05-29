@@ -1,0 +1,168 @@
+a:=1
+a=1
+a
+quit()
+(choose(7,0)*(.3)*(.7^7)) + (choose(7,1)*(.3)*(.7^6)) + (choose(7,2)*(.3)*(.7^5))
+(choose(7,0)*(.3^0)*(.7^7)) + (choose(7,1)*(.3^1)*(.7^6)) + (choose(7,2)*(.3^2)*(.7^5))
+pbinom(7,0,0.3) + pbinom(7,1,0.3) + pbinom(7,2,0.3)
+pbinom(0,7,0.3) + pbinom(1,7,0.3) + pbinom(2,7,0.3)
+pbinom(0,2,0.5)
+pbinom(0,2,0.6)
+pbinom(2,2,0.6)
+pbinom(2,7,0.3)
+quit
+q
+exit
+quit()
+load(DAAG)
+library(DAAG)
+quit()
+dbinom(1,10,0.1,log=FALSE)
+dbinom(10,10,0.1,log=FALSE)
+dbinom(1,2,0.1,log=FALSE)
+pbinom(1,2,0.1,log=FALSE)
+pbinom(18,100,0.11,log=FALSE)
+qbinom(18,100,0.11,log=FALSE)
+dbinom(18,100,0.11,log=FALSE)
+dbinom(31,100,0.11,log=FALSE)
+dbinom(18,100,0.11,log=FALSE)
+dbinom(18,100,0.11,log=FALSE)*100
+1 - dbinom(0,4,0.12,log=FALSE)
+1 - dbinom([1,2,3,4],4,0.12,log=FALSE)
+1 - dbinom(c(1,2,3,4),4,0.12,log=FALSE)
+dbinom(c(1,2,3,4),4,0.12,log=FALSE)
+sum(dbinom(c(1,2,3,4),4,0.12,log=FALSE))
+248.3-244.8
+3.5 - 9.76
+-2.76 - 3.5
+0.87 - 3.5
+3.5 - 6.13
+2*3.09*3.5/2.716 +3.5
+3.09*3.5/2.716 +3.5
+3.09*3.5/2.478 +3.5
+23.09*3.5/2.478 +3.5
+2*3.09*3.5/2.478 +3.5
+3.08*3.5/2.72 +3.5
+-3.08*3.5/2.72 +3.5
+193901/830
+813.5/233.615
+813.5/(813.5+233.615)
+0.24/sqrt(3226)
+sqrt(0.24*(1-0.24)/3226)
+sqrt(0.20*(1-0.20)/3226)
+46*112/625
+0.93*0.05/(0.95+0.03)
+0.93*0.05/(0.93+0.03)
+0.97*0.05/(0.97+0.07)
+1 - (1-0.7467)*251/243
+quit()
+pnorm()
+pnorm(0)
+pnorm(2)
+qnorm(0.977)
+pbinom()
+pbinom(1,2,1)
+pbinom(1,2,0.1)
+pbinom(1,2,0.5)
+?pbinom
+pbinom(1,1,0.1)
+pbinom(1,1,0.9)
+dbinom(1,1,0.9)
+dbinom(1,2,0.5)
+dbinom(2,2,0.5)
+dbinom(0,2,0.5)
+pbinom(0,2,0.5)
+pbinom(2,2,0.5)
+?pnorm
+pnorm(0)
+dnorm(0)
+pnorm(0.0001)-pnorm(0)
+pnorm(0.001)-pnorm(0)
+pnorm(0.1)-pnorm(0)
+pnorm(1)-pnorm(0)
+qnorm(pnorm(0))
+qnorm(pnorm(0)-dnorm(0))
+1/sqrt(2*pi)
+quit()
+pwd
+dir
+ls
+~
+cd
+aff_data = read.csv("/Users/ameyahate/Dropbox/Innovation Proj/Stats/affiliation_change",sep='|')
+aff_data
+summary(aff_data)
+(aff_data)head
+head(aff_data)
+na.omit(aff_data)
+na.omit(aff_data);
+na.omit(aff_data),
+head(aff_data)
+aff_data <- na.omit(aff_data)
+summary(aff_data)
+hist(aff_data$count)
+?hist
+hist(aff_data$count)
+quit()
+aff_data = read.csv("/Users/ameyahate/Dropbox/Innovation Proj/Stats/affiliation_change",sep='|')
+aff_data <- na.omit(aff_data)
+sel <-c(7130406713024771303587130504713050271303497148560713044071303647130693713035671303037130915713034371303477131000713029371305057130501713068371302487164932714770971478187130515713030071302997130301713038271302377131141713037871303597130354713025671303757130352713051771305597130365713024671302727130236713030671303027130305713030471302737130249713035171304997130496713084571308507161821713050671306867130685713078271303177130290713034471302397155537715567571303407130243713023571302457130251713024271304397130350713049771304987122872712285071228547159493715867971596387161308715962271607097160077715795871610377160210)
+sel <- c(7130406,7130247,7130358,7130504,7130502,7130349,7148560,7130440,7130364,7130693,7130356,7130303,7130915,7130343,7130347,7131000,7130293,7130505,7130501,7130683,7130248,7164932,7147709,7147818,7130515,7130300,7130299,7130301,7130382,7130237,7131141,7130378,7130359,7130354,7130256,7130375,7130352,7130517,7130559,7130365,7130246,7130272,7130236,7130306,7130302,7130305,7130304,7130273,7130249,7130351,7130499,7130496,7130845,7130850,7161821,7130506,7130686,7130685,7130782,7130317,7130290,7130344,7130239,7155537,7155675,7130340,7130243,7130235,7130245,7130251,7130242,7130439,7130350,7130497,7130498,7122872,7122850,7122854,7159493,7158679,7159638,7161308,7159622,7160709,7160077,7157958,7161037,7160210)
+summary(sel)
+summary(aff_data)
+?subset
+aff_data60 = subset(aff_data,indvidual_id=sel)
+summary(aff_data60)
+aff_data60 = subset(aff_data,indvidual_id in sel)
+?%in%
+?"%in%"
+aff_data60 = aff_data[aff_data$individual_id %in% sel,]
+summary(aff_data60)
+aff_data60 = aff_data[aff_data$individual_id %in% sel]
+summary(aff_data60)
+aff_data60 = aff_data[aff_data$individual_id %in% sel,]
+aff_data60
+summary(aff_data)
+aff_data[aff_data$individual_id %in% sel,]
+sel
+sel.is.vector()
+is.vector(sel)
+is.data.frame(sel)
+as.data.frame(sel)
+sel =as.data.frame(sel)
+aff_data60 = aff_data[aff_data$individual_id %in% sel,]
+summary(aff_data60)
+?is.element
+is.element(aff_data$individual, sel)
+L = is.element(aff_data$individual, sel)
+aff_data60 = aff_data[L,]
+summary(aff_data60)
+L = is.element(aff_data$individual, sel$sel)
+aff_data60 = aff_data[L,]
+summary(aff_data60)
+quit()
+?system
+system("git submodule init")
+getwd()
+system("git submodule init")
+system("git submodule update")
+system("make")
+library(devtools)
+install()
+build()
+test()
+install()
+system("git submodule init")
+system("git submodule update")
+system("make")
+install()
+system("make")
+install()
+system("make")
+install()
+system("git submodule init")
+system("git submodule update")
+system("make")
+install()
+install()
+quit()
